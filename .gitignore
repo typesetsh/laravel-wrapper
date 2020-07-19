@@ -1,0 +1,9 @@
+/vendor
+/.idea
+.DS_Store
+/samples
+/ZZ_samples
+/pdf-parser/var
+/.phpunit.result.cache
+.php_cs.cache
+composer.lock

@@ -1,0 +1,37 @@
+{
+    "name": "typesetsh/laravel-wrapper",
+    "description": "Typeset.sh wrapper for laravel 7",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jacob Siefer",
+            "email": "jacob@typeset.sh"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "laravel/framework": "^7.0",
+        "typesetsh/typesetsh": "^0.9"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.17@dev",
+        "phan/phan": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Typesetsh\\LaravelWrapper\\": "src/"
+        },
+        "files": ["src/helper.php"]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Typesetsh\\LaravelWrapper\\": "tests/unit/"
+        }
+    },
+    "repositories": [{
+            "type": "composer",
+            "url": "https://packages.typeset.sh"
+        }
+    ]
+}
