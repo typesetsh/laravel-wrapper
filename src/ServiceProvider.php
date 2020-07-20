@@ -26,6 +26,13 @@ class ServiceProvider extends Support\ServiceProvider implements DeferrableProvi
         $this->registerPdfRenderer();
     }
 
+    public function boot()
+    {
+        $this->publishes([
+            self::CONFIG_PATH => base_path('config/typesetsh.php'),
+        ]);
+    }
+
     protected function registerPdfRenderer(): void
     {
         $this->app->singleton('typesetsh', function ($app) {

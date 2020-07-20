@@ -37,9 +37,11 @@ class View implements Renderable, Responsable
         $this->pdf = $pdf;
     }
 
-    public function forceDownload(string $filename): void
+    public function forceDownload(string $filename): self
     {
         $this->filename = $filename;
+
+        return $this;
     }
 
     public function render(): string
