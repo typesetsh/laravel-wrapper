@@ -59,7 +59,6 @@ Route::get('/invoice/print', function () {
 Alternative you can use the helper.
 
 ```php
-use Typesetsh\LaravelWrapper\Facades\Pdf;
 
 Route::get('/invoice/print', function () {
     $invoice = new stdClass();
@@ -71,7 +70,6 @@ Route::get('/invoice/print', function () {
 or force a download
 
 ```php
-use Typesetsh\LaravelWrapper\Facades\Pdf;
 
 Route::get('/invoice/print', function () {
     $invoice = new stdClass();
