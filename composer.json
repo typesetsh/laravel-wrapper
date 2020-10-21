@@ -12,7 +12,7 @@
     "minimum-stability": "stable",
     "require": {
         "laravel/framework": "^7.0 || ^8.0",
-        "typesetsh/typesetsh": "^0.12"
+        "typesetsh/typesetsh": "^0.13"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.17@dev",
