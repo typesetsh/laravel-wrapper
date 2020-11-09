@@ -12,28 +12,13 @@ in your laravel project. Typeset.sh is a printcss layout and rendering engine wr
 
 Make sure you have access to a valid composer token from typeset.sh.
 
-Add typeset.sh packages repository to composer.
+Add typeset.sh package repository to composer and install the package via composer:
 
     composer config repositories.typesetsh composer https://packages.typeset.sh
     composer require typesetsh/laravel-wrapper
 
+The package will be automatically discovered in your application thanks to [package auto-discovery](https://laravel.com/docs/8.x/packages#package-discovery).
 
-Then add the following line to register provider in `config/app.php`
-```php
-'providers' => [
-
-    // ...
-    
-    App\Providers\AppServiceProvider::class,
-    App\Providers\AuthServiceProvider::class,
-    App\Providers\EventServiceProvider::class,
-    App\Providers\RouteServiceProvider::class,
-[+] Typesetsh\LaravelWrapper\ServiceProvider::class,
-
-],
-```  
-    
-    
 ## Usage
 
 The wrapper works similar to the view. Technically it wraps the view and uses its html output

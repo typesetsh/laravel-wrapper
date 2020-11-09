@@ -1,8 +1,7 @@
 <?php
 /**
- * @copyright Copyright (c) 2020 Jacob Siefer
- *
- * @see LICENSE
+ * Copyright (c) 2020 Jacob Siefer
+ * See LICENSE bundled with this package for license details.
  */
 
 namespace typesetsh;

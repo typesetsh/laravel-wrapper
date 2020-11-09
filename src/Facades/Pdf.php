@@ -1,16 +1,17 @@
 <?php
 /**
- * @copyright Copyright (c) 2020 Jacob Siefer
- *
- * @see LICENSE
+ * Copyright (c) 2020 Jacob Siefer
+ * See LICENSE bundled with this package for license details.
  */
+
+declare(strict_types=1);
 
 namespace Typesetsh\LaravelWrapper\Facades;
 
-use Typesetsh\LaravelWrapper\PdfView;
+use Typesetsh\LaravelWrapper\Pdf\View;
 
 /**
- * @method static PdfView make($view, array $data = [], array $mergeData = [])
+ * @method static View make($view, array $data = [], array $mergeData = [])
  */
 class Pdf extends \Illuminate\Support\Facades\Facade
 {

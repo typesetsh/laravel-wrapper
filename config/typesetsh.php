@@ -12,7 +12,9 @@ return [
     |
     */
 
-    'allowed_directories' => [public_path()],
+    'allowed_directories' => [
+        public_path(),
+    ],
 
     /*
     |--------------------------------------------------------------------------
