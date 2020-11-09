@@ -7,6 +7,10 @@
         {
             "name": "Jacob Siefer",
             "email": "jacob@typeset.sh"
+        },
+        {
+            "name": "Rouven Alexander Rieker",
+            "email": "therouv@googlemail.com"
         }
     ],
     "minimum-stability": "stable",
@@ -15,21 +19,25 @@
         "typesetsh/typesetsh": "^0.14"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.17@dev",
-        "phan/phan": "dev-master"
+        "friendsofphp/php-cs-fixer": "^2.16"
     },
     "autoload": {
         "psr-4": {
             "Typesetsh\\LaravelWrapper\\": "src/"
         },
-        "files": ["src/helper.php"]
+        "files": [
+            "src/helper.php"
+        ]
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Typesetsh\\LaravelWrapper\\": "tests/unit/"
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Typesetsh\\LaravelWrapper\\TypesetServiceProvider"
+            ]
         }
     },
-    "repositories": [{
+    "repositories": [
+        {
             "type": "composer",
             "url": "https://packages.typeset.sh"
         }

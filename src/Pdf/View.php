@@ -1,9 +1,9 @@
 <?php
 /**
- * @copyright Copyright (c) 2020 Jacob Siefer
- *
- * @see LICENSE
+ * Copyright (c) 2020 Jacob Siefer
+ * See LICENSE bundled with this package for license details.
  */
+
 declare(strict_types=1);
 
 namespace Typesetsh\LaravelWrapper\Pdf;
@@ -11,6 +11,7 @@ namespace Typesetsh\LaravelWrapper\Pdf;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Contracts\View\View as HtmlView;
+use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Typesetsh\LaravelWrapper\Typesetsh;
 
@@ -54,7 +55,7 @@ class View implements Renderable, Responsable
     /**
      * Create an HTTP response that represents the object.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      */
     public function toResponse($request): StreamedResponse
     {
