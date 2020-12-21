@@ -32,7 +32,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Typesetsh\\LaravelWrapper\\TypesetServiceProvider"
+                "Typesetsh\\LaravelWrapper\\ServiceProvider"
             ]
         }
     },
