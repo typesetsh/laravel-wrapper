@@ -3,28 +3,23 @@
  * Copyright (c) 2020 Jacob Siefer
  * See LICENSE bundled with this package for license details.
  */
-
 declare(strict_types=1);
 
 namespace Typesetsh\LaravelWrapper;
 
-use typesetsh\HtmlToPdf;
-use typesetsh\Result;
-use typesetsh\UriResolver;
+use Typesetsh\HtmlToPdf;
+use Typesetsh\Result;
+use Typesetsh\UriResolver;
 
 /**
  * Typeset.sh pdf wrapper with a pre provided uri resolver.
  */
 class Typesetsh
 {
-    /**
-     * @var HtmlToPdf
-     */
+    /** @var HtmlToPdf */
     private $html2pdf;
 
-    /**
-     * @var callable|UriResolver
-     */
+    /** @var callable|UriResolver */
     private $uriResolver;
 
     public function __construct(callable $uriResolver = null, HtmlToPdf $html2pdf = null)
@@ -39,7 +34,7 @@ class Typesetsh
     }
 
     /**
-     * @param string[] $html
+     * @param non-empty-list<string> $html
      */
     public function renderMultiple(array $html): Result
     {

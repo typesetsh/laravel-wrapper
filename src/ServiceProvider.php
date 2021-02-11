@@ -3,16 +3,15 @@
  * Copyright (c) 2020 Jacob Siefer
  * See LICENSE bundled with this package for license details.
  */
-
 declare(strict_types=1);
 
 namespace Typesetsh\LaravelWrapper;
 
-use Illuminate\Contracts\Support\DeferrableProvider;
+use Illuminate\Contracts;
 use Illuminate\Support;
-use typesetsh\UriResolver;
+use Typesetsh\UriResolver;
 
-class ServiceProvider extends Support\ServiceProvider implements DeferrableProvider
+class ServiceProvider extends Support\ServiceProvider implements Contracts\Support\DeferrableProvider
 {
     const CONFIG_PATH = __DIR__.'/../config/typesetsh.php';
 
@@ -39,11 +38,14 @@ class ServiceProvider extends Support\ServiceProvider implements DeferrableProvi
             $allowedDirectories = $app['config']['typesetsh.allowed_directories'] ?? [];
             $allowProtocols = $app['config']['typesetsh.allowed_protocols'] ?? [];
             $cacheDir = $app['config']['typesetsh.cache_dir'] ?? null;
-            $timeout = $app['config']['typesetsh.timeout'] ?? 15;
+            $timeout = (int)($app['config']['typesetsh.timeout'] ?? 15);
+            $downloadLimit = (int)($app['config']['typesetsh.download_limit'] ?? 1024 * 1024 * 5);
 
             $schemes = [];
+            $schemes['data'] = new UriResolver\Data($cacheDir);
+
             if ($allowProtocols) {
-                $http = new UriResolver\Http($cacheDir, $timeout);
+                $http = new UriResolver\Http($cacheDir, $timeout, $downloadLimit);
                 foreach ($allowProtocols as $protocol) {
                     $schemes[$protocol] = $http;
                 }

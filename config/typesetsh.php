@@ -51,4 +51,16 @@ return [
     */
 
     'timeout' => 15,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Download Limit
+    |--------------------------------------------------------------------------
+    |
+    | Max file-size when downloading remote resources. Only works when ext-curl
+    | is available.
+    |
+    */
+
+    'download_limit' => 1024 * 1024 * 5,
 ];

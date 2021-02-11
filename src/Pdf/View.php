@@ -3,7 +3,6 @@
  * Copyright (c) 2020 Jacob Siefer
  * See LICENSE bundled with this package for license details.
  */
-
 declare(strict_types=1);
 
 namespace Typesetsh\LaravelWrapper\Pdf;

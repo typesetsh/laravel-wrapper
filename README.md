@@ -48,7 +48,7 @@ Alternative you can use the helper.
 Route::get('/invoice/print', function () {
     $invoice = new stdClass();
     
-    return typesetsh\pdf('invoice', ['invoice' => $invoice]);
+    return Typesetsh\pdf('invoice', ['invoice' => $invoice]);
 });
 ```
 
@@ -59,7 +59,7 @@ or force a download
 Route::get('/invoice/print', function () {
     $invoice = new stdClass();
     
-    return typesetsh\pdf('invoice', ['invoice' => $invoice])->forceDownload('invoice.pdf');
+    return Typesetsh\pdf('invoice', ['invoice' => $invoice])->forceDownload('invoice.pdf');
 });
 ```
 
