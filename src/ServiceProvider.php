@@ -36,6 +36,7 @@ class ServiceProvider extends Support\ServiceProvider implements Contracts\Suppo
     {
         $this->app->singleton('typesetsh', function ($app) {
             $allowedDirectories = $app['config']['typesetsh.allowed_directories'] ?? [];
+            $baseDir = $app['config']['typesetsh.base_dir'] ?? [];
             $allowProtocols = $app['config']['typesetsh.allowed_protocols'] ?? [];
             $cacheDir = $app['config']['typesetsh.cache_dir'] ?? null;
             $timeout = (int)($app['config']['typesetsh.timeout'] ?? 15);
@@ -54,7 +55,7 @@ class ServiceProvider extends Support\ServiceProvider implements Contracts\Suppo
                 $schemes['file'] = new UriResolver\File($allowedDirectories);
             }
 
-            return new Typesetsh(new UriResolver($schemes));
+            return new Typesetsh(new UriResolver($schemes, $baseDir));
         });
 
         $this->app->singleton('typesetsh.pdf', function ($app) {
