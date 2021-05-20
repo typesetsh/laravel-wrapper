@@ -44,6 +44,13 @@ class View implements Renderable, Responsable
         return $this;
     }
 
+    public function toFile(string $filename): void
+    {
+        $html = $this->view->render();
+
+        $this->pdf->render($html)->toFile($filename);
+    }
+
     public function render(): string
     {
         $html = $this->view->render();
