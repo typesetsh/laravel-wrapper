@@ -41,6 +41,7 @@ class ServiceProvider extends Support\ServiceProvider implements Contracts\Suppo
             $cacheDir = $app['config']['typesetsh.cache_dir'] ?? null;
             $timeout = (int)($app['config']['typesetsh.timeout'] ?? 15);
             $downloadLimit = (int)($app['config']['typesetsh.download_limit'] ?? 1024 * 1024 * 5);
+            $pdfVersion = (string)($app['config']['typesetsh.pdf_version'] ?? '1.6');
 
             $schemes = [];
             $schemes['data'] = new UriResolver\Data($cacheDir);
@@ -55,7 +56,7 @@ class ServiceProvider extends Support\ServiceProvider implements Contracts\Suppo
                 $schemes['file'] = new UriResolver\File($allowedDirectories);
             }
 
-            return new Typesetsh(new UriResolver($schemes, $baseDir));
+            return new Typesetsh(new UriResolver($schemes, $baseDir), null, $pdfVersion);
         });
 
         $this->app->singleton('typesetsh.pdf', function ($app) {

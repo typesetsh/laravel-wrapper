@@ -22,15 +22,22 @@ class Typesetsh
     /** @var callable|UriResolver */
     private $uriResolver;
 
-    public function __construct(callable $uriResolver = null, HtmlToPdf $html2pdf = null)
+    /** @var string */
+    private $version;
+
+    public function __construct(callable $uriResolver = null, HtmlToPdf $html2pdf = null, string $version = '1.6')
     {
         $this->uriResolver = $uriResolver ?? UriResolver::httpOnly();
         $this->html2pdf = $html2pdf ?? new HtmlToPdf();
+        $this->version = $version;
     }
 
     public function render(string $html): Result
     {
-        return $this->html2pdf->render($html, $this->uriResolver);
+        $result = $this->html2pdf->render($html, $this->uriResolver);
+        $result->version = $this->version;
+
+        return $result;
     }
 
     /**
@@ -38,6 +45,9 @@ class Typesetsh
      */
     public function renderMultiple(array $html): Result
     {
-        return $this->html2pdf->renderMultiple($html, $this->uriResolver);
+        $result = $this->html2pdf->renderMultiple($html, $this->uriResolver);
+        $result->version = $this->version;
+
+        return $result;
     }
 }
