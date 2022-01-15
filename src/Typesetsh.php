@@ -37,6 +37,12 @@ class Typesetsh
         $result = $this->html2pdf->render($html, $this->uriResolver);
         $result->version = $this->version;
 
+        // Append any issues from URI resolver to result
+        if ($this->uriResolver instanceof UriResolver && $this->uriResolver->errors) {
+            array_push($result->issues, ...$this->uriResolver->errors);
+            $this->uriResolver->errors = [];
+        }
+
         return $result;
     }
 
@@ -47,6 +53,12 @@ class Typesetsh
     {
         $result = $this->html2pdf->renderMultiple($html, $this->uriResolver);
         $result->version = $this->version;
+
+        // Append any issues from URI resolver to result
+        if ($this->uriResolver instanceof UriResolver && $this->uriResolver->errors) {
+            array_push($result->issues, ...$this->uriResolver->errors);
+            $this->uriResolver->errors = [];
+        }
 
         return $result;
     }

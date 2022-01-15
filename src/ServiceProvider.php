@@ -13,7 +13,7 @@ use Typesetsh\UriResolver;
 
 class ServiceProvider extends Support\ServiceProvider implements Contracts\Support\DeferrableProvider
 {
-    const CONFIG_PATH = __DIR__.'/../config/typesetsh.php';
+    public const CONFIG_PATH = __DIR__.'/../config/typesetsh.php';
 
     /**
      * Register the service provider.
@@ -39,9 +39,9 @@ class ServiceProvider extends Support\ServiceProvider implements Contracts\Suppo
             $baseDir = $app['config']['typesetsh.base_dir'] ?? [];
             $allowProtocols = $app['config']['typesetsh.allowed_protocols'] ?? [];
             $cacheDir = $app['config']['typesetsh.cache_dir'] ?? null;
-            $timeout = (int)($app['config']['typesetsh.timeout'] ?? 15);
-            $downloadLimit = (int)($app['config']['typesetsh.download_limit'] ?? 1024 * 1024 * 5);
-            $pdfVersion = (string)($app['config']['typesetsh.pdf_version'] ?? '1.6');
+            $timeout = (int) ($app['config']['typesetsh.timeout'] ?? 15);
+            $downloadLimit = (int) ($app['config']['typesetsh.download_limit'] ?? 1024 * 1024 * 5);
+            $pdfVersion = (string) ($app['config']['typesetsh.pdf_version'] ?? '1.6');
 
             $schemes = [];
             $schemes['data'] = new UriResolver\Data($cacheDir);

@@ -23,9 +23,13 @@ return [
     |
     | The base directory to use for relative paths.
     |
+    | Use public_path() to convert any /some-file.css to your public directory.
+    | Use an empty '' string if you prefer absolute paths in your source.
+    |
+    | Make sure the paths you pick are inside the allowed_directories.
     */
 
-    'base_dir' => '/',
+    'base_dir' => '',
 
     /*
     |--------------------------------------------------------------------------
