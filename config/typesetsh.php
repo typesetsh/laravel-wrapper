@@ -87,5 +87,5 @@ return [
     | PDF version to save the document in.
     */
 
-    'pdf_version' => '1.4',
+    'pdf_version' => '1.6',
 ];
