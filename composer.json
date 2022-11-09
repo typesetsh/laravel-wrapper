@@ -1,6 +1,6 @@
 {
     "name": "typesetsh/laravel-wrapper",
-    "description": "Typeset.sh wrapper for laravel 7/8",
+    "description": "Typeset.sh wrapper for laravel 7/8/9",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -16,7 +16,7 @@
     "minimum-stability": "stable",
     "require": {
         "laravel/framework": "^7.0 || ^8.0 || ^9.0",
-        "typesetsh/typesetsh": "^0.21"
+        "typesetsh/typesetsh": "^0.22"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "~v3.4.0"
