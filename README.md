@@ -2,10 +2,10 @@
 <p align="center"><img src="https://static.typeset.sh/images/typeset.sh-logo.svg" width="300"></p>
 
 
-# Typeset.sh wrapper for Laravel 7, 8 and 9
+# Typeset.sh wrapper for Laravel 7, 8, 9 and 10
 
 This is a laravel typeset.sh wrapper that lets you easily configure and use typeset.sh
-in your laravel project. Typeset.sh is a printcss layout and rendering engine written in PHP.
+in your Laravel project. Typeset.sh is a printcss layout and rendering engine written in PHP.
 
 
 ## Installation
@@ -17,7 +17,7 @@ Add typeset.sh package repository to composer and install the package via compos
     composer config repositories.typesetsh composer https://packages.typeset.sh
     composer require typesetsh/laravel-wrapper
 
-The package will be automatically discovered in your application thanks to [package auto-discovery](https://laravel.com/docs/8.x/packages#package-discovery).
+The package will be automatically discovered in your application thanks to [package auto-discovery](https://laravel.com/docs/10.x/packages#package-discovery).
 
 ## Usage
 

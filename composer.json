@@ -1,6 +1,6 @@
 {
     "name": "typesetsh/laravel-wrapper",
-    "description": "Typeset.sh wrapper for laravel 7/8/9",
+    "description": "Typeset.sh wrapper for laravel 7/8/9/10",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -15,7 +15,7 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "laravel/framework": "^7.0 || ^8.0 || ^9.0",
+        "laravel/framework": "^7.0 || ^8.0 || ^9.0 || ^10.0",
         "typesetsh/typesetsh": "^0.23.1"
     },
     "require-dev": {
