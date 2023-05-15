@@ -3,6 +3,20 @@
 return [
     /*
     |--------------------------------------------------------------------------
+    | Debug mode
+    |--------------------------------------------------------------------------
+    |
+    | Configuration flag allows you to enable or disable the special view that provides
+    | additional information and error logs alongside the PDF in a PDF view.
+    |
+    | This feature will only work if Laravel's global debug mode is enabled.
+    |
+    */
+
+    'debug' => true,
+
+    /*
+    |--------------------------------------------------------------------------
     | Allowed directories
     |--------------------------------------------------------------------------
     |

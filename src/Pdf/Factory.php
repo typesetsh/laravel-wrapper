@@ -22,10 +22,16 @@ class Factory
      */
     private $view;
 
-    public function __construct(Typesetsh $pdf, ViewFactory $view)
+    /**
+     * @var bool
+     */
+    private $debug;
+
+    public function __construct(Typesetsh $pdf, ViewFactory $view, bool $debug = false)
     {
         $this->typesetsh = $pdf;
         $this->view = $view;
+        $this->debug = $debug;
     }
 
     /**
@@ -44,6 +50,6 @@ class Factory
 
     protected function viewInstance(\Illuminate\Contracts\View\View $view): View
     {
-        return new View($view, $this->typesetsh);
+        return new View($view, $this->typesetsh, $this->debug);
     }
 }

@@ -18,15 +18,16 @@ class ServiceProvider extends Support\ServiceProvider implements Contracts\Suppo
     /**
      * Register the service provider.
      */
-    public function register()
+    public function register(): void
     {
         $this->mergeConfigFrom(self::CONFIG_PATH, 'typesetsh');
 
         $this->registerPdfRenderer();
     }
 
-    public function boot()
+    public function boot(): void
     {
+        $this->loadViewsFrom(__DIR__.'/views', 'typesetsh');
         $this->publishes([
             self::CONFIG_PATH => base_path('config/typesetsh.php'),
         ]);
@@ -34,9 +35,9 @@ class ServiceProvider extends Support\ServiceProvider implements Contracts\Suppo
 
     protected function registerPdfRenderer(): void
     {
-        $this->app->singleton('typesetsh', function ($app) {
+        $this->app->singleton('typesetsh', function (Contracts\Foundation\Application $app) {
             $allowedDirectories = $app['config']['typesetsh.allowed_directories'] ?? [];
-            $baseDir = $app['config']['typesetsh.base_dir'] ?? [];
+            $baseDir = $app['config']['typesetsh.base_dir'] ?? '';
             $allowProtocols = $app['config']['typesetsh.allowed_protocols'] ?? [];
             $cacheDir = $app['config']['typesetsh.cache_dir'] ?? null;
             $timeout = (int) ($app['config']['typesetsh.timeout'] ?? 15);
@@ -59,13 +60,17 @@ class ServiceProvider extends Support\ServiceProvider implements Contracts\Suppo
             return new Typesetsh(new UriResolver($schemes, $baseDir), null, $pdfVersion);
         });
 
-        $this->app->singleton('typesetsh.pdf', function ($app) {
-            return new Pdf\Factory($app['typesetsh'], $app['view']);
+        $this->app->singleton('typesetsh.pdf', function (Contracts\Foundation\Application $app) {
+            $debug = $app->hasDebugModeEnabled() && ($app['config']['typesetsh.debug'] ?? true);
+
+            return new Pdf\Factory($app['typesetsh'], $app['view'], $debug);
         });
     }
 
     /**
      * Get the services provided by the provider.
+     *
+     * @return list<string>
      */
     public function provides(): array
     {
