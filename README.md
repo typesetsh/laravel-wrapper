@@ -2,7 +2,7 @@
 <p align="center"><img src="https://static.typeset.sh/images/typeset.sh-logo.svg" width="300"></p>
 
 
-# Typeset.sh wrapper for Laravel 7, 8, 9 and 10
+# Typeset.sh wrapper for Laravel 7, 8, 9, 10 and 11
 
 This is a laravel typeset.sh wrapper that lets you easily configure and use typeset.sh
 in your laravel project. Typeset.sh is a printcss layout and rendering engine written in PHP.
@@ -33,7 +33,7 @@ use Typesetsh\LaravelWrapper\Facades\Pdf;
 
 Route::get('/invoice/print', function () {
     $invoice = new stdClass();
-    
+
     return Pdf::make('invoice', ['invoice' => $invoice]);
 });
 ```
@@ -47,7 +47,7 @@ Alternative you can use the helper.
 
 Route::get('/invoice/print', function () {
     $invoice = new stdClass();
-    
+
     return Typesetsh\pdf('invoice', ['invoice' => $invoice]);
 });
 ```
@@ -58,7 +58,7 @@ or force a download
 
 Route::get('/invoice/print', function () {
     $invoice = new stdClass();
-    
+
     return Typesetsh\pdf('invoice', ['invoice' => $invoice])->forceDownload('invoice.pdf');
 });
 ```
@@ -67,7 +67,7 @@ Route::get('/invoice/print', function () {
 ## Configuration
 
 Typeset.sh does not require much configuration. The only important aspect to understand is that
-by default typeset.sh does not allow including any external resources (image, css, fonts,...) 
+by default typeset.sh does not allow including any external resources (image, css, fonts,...)
 unless specified.
 
 See the configuration file `config/typesetsh.php` for more information. By default, typeset.sh
@@ -76,8 +76,8 @@ has access to the public directory and any http(s) resources.
 You can also publish the file using:
 
     php artisan vendor:publish --provider="Typesetsh\LaravelWrapper\ServiceProvider"
-    
-    
+
+
 ## License
 
 This extension is under the [MIT license](LICENSE).
