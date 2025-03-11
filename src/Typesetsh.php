@@ -25,11 +25,28 @@ class Typesetsh
     /** @var string */
     private $version;
 
-    public function __construct(callable $uriResolver = null, HtmlToPdf $html2pdf = null, string $version = '1.6')
+    public function __construct(?callable $uriResolver = null, ?HtmlToPdf $html2pdf = null, string $version = '1.6')
     {
         $this->uriResolver = $uriResolver ?? UriResolver::httpOnly();
         $this->html2pdf = $html2pdf ?? new HtmlToPdf();
         $this->version = $version;
+    }
+
+    /**
+     * Save handler are called prior to save and can manipulate
+     * or append or validate the PDF document.
+     *
+     * @param callable(Pdf\Document) $saveHandler
+     */
+    public function with(callable $saveHandler): self
+    {
+        $name = "_with_". count($this->html2pdf->saveHandler);
+
+        $self = clone $this;
+        $self->html2pdf->saveHandler[$name] = $saveHandler;
+
+        return $self;
+
     }
 
     public function render(string $html): Result
@@ -61,5 +78,11 @@ class Typesetsh
         }
 
         return $result;
+    }
+
+    public function __clone(): void
+    {
+        $this->html2pdf = clone $this->html2pdf;
+        $this->uriResolver = clone $this->uriResolver;
     }
 }

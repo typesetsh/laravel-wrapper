@@ -44,7 +44,20 @@ class View implements Renderable, Responsable
         $this->debug = $debug;
     }
 
-    public function debug(bool $flag = true)
+    /**
+     * Save handler are called prior to save and can manipulate
+     * or append or validate the PDF document.
+     *
+     * @param callable(Pdf\Document) $saveHandler
+     */
+    public function with(callable $saveHandler): self
+    {
+        $this->pdf = $this->pdf->with($saveHandler);
+
+        return $this;
+    }
+
+    public function debug(bool $flag = true): self
     {
         $this->debug = $flag;
 
