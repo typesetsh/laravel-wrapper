@@ -80,7 +80,7 @@ class Typesetsh
         return $result;
     }
 
-    public function __clone(): void
+    public function __clone()
     {
         $this->html2pdf = clone $this->html2pdf;
         $this->uriResolver = clone $this->uriResolver;
