@@ -96,9 +96,6 @@ class View implements Renderable, Responsable
             return $this->toDebugResponse();
         }
 
-        $html = $this->view->render();
-        $result = $this->pdf->render($html);
-
         $cb = function () {
             echo $this->render();
         };
