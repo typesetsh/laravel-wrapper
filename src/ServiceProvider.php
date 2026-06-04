@@ -65,6 +65,11 @@ class ServiceProvider extends Support\ServiceProvider implements Contracts\Suppo
 
             return new Pdf\Factory($app['typesetsh'], $app['view'], $debug);
         });
+
+        // Allow resolving the singletons via class-name injection; without the
+        // aliases (+ provides() below) a type-hint autowires a fresh instance.
+        $this->app->alias('typesetsh', Typesetsh::class);
+        $this->app->alias('typesetsh.pdf', Pdf\Factory::class);
     }
 
     /**
@@ -74,6 +79,6 @@ class ServiceProvider extends Support\ServiceProvider implements Contracts\Suppo
      */
     public function provides(): array
     {
-        return ['typesetsh', 'typesetsh.pdf'];
+        return ['typesetsh', Typesetsh::class, 'typesetsh.pdf', Pdf\Factory::class];
     }
 }
