@@ -2,7 +2,7 @@
 <p align="center"><img src="https://static.typeset.sh/images/typeset.sh-logo.svg" width="300"></p>
 
 
-# Typeset.sh wrapper for Laravel 7, 8, 9, 10, 11 and 12
+# Typeset.sh wrapper for Laravel 7, 8, 9, 10, 11, 12 and 13
 
 This is a laravel typeset.sh wrapper that lets you easily configure and use typeset.sh
 in your laravel project. Typeset.sh is a printcss layout and rendering engine written in PHP.
